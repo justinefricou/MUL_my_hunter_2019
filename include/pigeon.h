@@ -19,6 +19,7 @@ typedef struct pigeon {
     sfSprite *sprite;
     sfIntRect rect_sprite;
     sfClock *cl_flapping;
+    sfClock *cl_moving;
 } pigeon_t;
 
 pigeon_t *create_pigeon(char *filepath, int x, int y);
