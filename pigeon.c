@@ -53,7 +53,7 @@ void make_pigeon_move(pigeon_t *pigeon)
 
     time = sfClock_getElapsedTime(pigeon->cl_moving);
     seconds = sfTime_asSeconds(time);
-    if (seconds > 0.01) {
+    if (seconds > 0.025) {
         sfClock_restart(pigeon->cl_moving);
         if ((pigeon->position).x == 800)
             (pigeon->position).x = 0;
