@@ -20,7 +20,8 @@
 #include "background.h"
 
 int play(sfRenderWindow *window);
-void game_loop(sfRenderWindow *win, background_t *background, pigeon_t *pigeon);
-void update_win_play(sfRenderWindow *win, sfSprite *backgrnd, pigeon_t *pigeon);
+int create_pigeons_array(pigeon_t ***pigeons, int nbr);
+void game_loop(sfRenderWindow *win, background_t *backgrnd, pigeon_t **pigeons);
+void update_win_play(sfRenderWindow *w, sfSprite *backgrnd, pigeon_t **pigeons);
 
 #endif // DEF_PLAY

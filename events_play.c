@@ -7,25 +7,27 @@
 
 #include "include/events_play.h"
 
-void handle_events_play(sfRenderWindow *win, sfEvent event, pigeon_t *pigeon)
+void handle_events_play(sfRenderWindow *win, sfEvent event, pigeon_t **pigeons)
 {
     switch (event.type) {
     case sfEvtClosed :
         sfRenderWindow_close(win);
         break;
     case sfEvtMouseButtonReleased :
-        manage_mouse_click_play(event.mouseButton, pigeon);
+        manage_mouse_click_play(event.mouseButton, pigeons);
         break;
     }
 }
 
-void manage_mouse_click_play(sfMouseButtonEvent event, pigeon_t *pigeon)
+void manage_mouse_click_play(sfMouseButtonEvent evnt, pigeon_t **pigeons)
 {
-    if (click_at_right_x(event, pigeon) && click_at_right_y(event, pigeon))
-        (pigeon->lives)--;
+    for (int i = 0; i < 5; i++) {
+        if (click_right_x(evnt, pigeons[i]) && click_right_y(evnt, pigeons[i]))
+            (pigeons[i]->lives)--;
+    }
 }
 
-int click_at_right_x(sfMouseButtonEvent event, pigeon_t *pigeon)
+int click_right_x(sfMouseButtonEvent event, pigeon_t *pigeon)
 {
     if ((pigeon->position).x <= (float)(event.x)) {
         if ((float)(event.x) <= (pigeon->position).x + 64)
@@ -34,7 +36,7 @@ int click_at_right_x(sfMouseButtonEvent event, pigeon_t *pigeon)
     return (0);
 }
 
-int click_at_right_y(sfMouseButtonEvent event, pigeon_t *pigeon)
+int click_right_y(sfMouseButtonEvent event, pigeon_t *pigeon)
 {
     if ((pigeon->position).y <= (float)(event.y)) {
         if ((float)(event.y) <= (pigeon->position).y + 64)
