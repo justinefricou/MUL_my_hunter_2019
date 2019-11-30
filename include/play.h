@@ -16,7 +16,10 @@
 #include <SFML/System/Time.h>
 #include <SFML/System/Clock.h>
 #include "events_play.h"
+#include "pigeon.h"
+#include "background.h"
 
 int play(sfRenderWindow *window);
+void update_win_play(sfRenderWindow *win, sfSprite *backgrnd, pigeon_t *pigeon);
 
 #endif // DEF_PLAY

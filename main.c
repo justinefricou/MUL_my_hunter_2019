@@ -17,7 +17,10 @@ int main(int argc, char **argv)
         return (0);
     }
     window = sfRenderWindow_create(vid_mode, "my_hunter", sfDefaultStyle, NULL);
-    play(window);
+    if (play(window) == 84) {
+        sfRenderWindow_destroy(window);
+        return (84);
+    }
     sfRenderWindow_destroy(window);
     return (0);
 }

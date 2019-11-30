@@ -10,30 +10,40 @@
 int play(sfRenderWindow *window)
 {
     sfEvent event;
-    sfTexture *texture_duck;
-    sfSprite *sprite_duck;
-    sfIntRect rect_duck = {0, 0, 110, 110};
-    sfClock *cl_flapping;
-    sfTime t_flapping;
-    sfColor black = {0, 0, 0, 255};
+    background_t *background = NULL;
+    pigeon_t *pigeon = NULL;
 
-    texture_duck = sfTexture_createFromFile("my_hunter_spritesheet.png", NULL);
-    sprite_duck = sfSprite_create();
-    cl_flapping = sfClock_create();
-    sfSprite_setTexture(sprite_duck, texture_duck, sfTrue);
-    sfSprite_setTextureRect(sprite_duck, rect_duck);
+    background = create_background("background.png");
+    if (background == NULL)
+        return (84);
+    pigeon = create_pigeon("pigeon.png", 0, 0);
+    if (pigeon == NULL) {
+        destroy_background(background);
+        return (84);
+    }
     while (sfRenderWindow_isOpen(window)) {
         sfRenderWindow_pollEvent(window, &event);
         handle_events_play(window, event);
-        //make_duck_flap(duck);
-        sfSprite_setTexture(sprite_duck, texture_duck, sfTrue);
-        sfSprite_setTextureRect(sprite_duck, rect_duck);
-        sfRenderWindow_clear(window, black);
-        sfRenderWindow_drawSprite(window, sprite_duck, NULL);
-        sfRenderWindow_display(window);
+        update_win_play(window, background->sprite, pigeon);
     }
-    sfTexture_destroy(texture_duck);
-    sfSprite_destroy(sprite_duck);
-    sfClock_destroy(cl_flapping);
+    destroy_background(background);
+    destroy_pigeon(pigeon);
     return (0);
+}
+
+void update_win_play(sfRenderWindow *win, sfSprite *backgrnd, pigeon_t *pigeon)
+{
+    sfTime t_flapping;
+    float sec_flapping = 0.0;
+
+    t_flapping = sfClock_getElapsedTime(pigeon->cl_flapping);
+    sec_flapping = sfTime_asSeconds(t_flapping);
+    if (sec_flapping > 0.05) {
+        sfClock_restart(pigeon->cl_flapping);
+        make_pigeon_flap(pigeon);
+        make_pigeon_move(pigeon);
+        sfRenderWindow_drawSprite(win, backgrnd, NULL);
+        sfRenderWindow_drawSprite(win, pigeon->sprite, NULL);
+        sfRenderWindow_display(win);
+    }
 }

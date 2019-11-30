@@ -10,7 +10,9 @@ NAME	=	my_hunter
 SRC	=	main.c\
 		display_usage.c\
 		play.c\
-		events_play.c
+		events_play.c\
+		pigeon.c\
+		background.c
 
 OBJ	=	$(SRC:.c=.o)
 
