@@ -75,7 +75,7 @@ void make_pigeon_fall(pigeon_t *pigeon)
         sfClock_restart(pigeon->cl_moving);
         if ((pigeon->position).y < 550) {
             (pigeon->position).y += (int)(5 + (pigeon->position).y / 35);
-            (pigeon->position).x += 2;
+            (pigeon->position).x += 5;
             pigeon->rect_sprite.left = 128;
         } else
             pigeon->rect_sprite.left = 0;

@@ -18,10 +18,11 @@
 #include "events_play.h"
 #include "pigeon.h"
 #include "background.h"
+#include "weapon.h"
 
 int play(sfRenderWindow *window);
 int create_pigeons_array(pigeon_t ***pigeons, int nbr);
-void game_loop(sfRenderWindow *win, background_t *backgrnd, pigeon_t **pigeons);
-void update_win_play(sfRenderWindow *w, sfSprite *backgrnd, pigeon_t **pigeons);
+void game_loop(sfRenderWindow *w, background_t *b, weapon_t *we, pigeon_t **p);
+void update_w_play(sfRenderWindow *w, sfSprite *b, weapon_t *we, pigeon_t **p);
 
 #endif // DEF_PLAY

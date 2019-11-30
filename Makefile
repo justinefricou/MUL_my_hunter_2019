@@ -12,7 +12,8 @@ SRC	=	main.c\
 		play.c\
 		events_play.c\
 		pigeon.c\
-		background.c
+		background.c\
+		weapon.c
 
 OBJ	=	$(SRC:.c=.o)
 

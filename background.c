@@ -7,17 +7,15 @@
 
 #include "include/background.h"
 
-background_t *create_background(char *filepath)
+int create_background(background_t **background, char *filepath)
 {
-    background_t *background = NULL;
-
-    background = malloc(sizeof(background_t));
-    if (background != NULL) {
-        background->texture = sfTexture_createFromFile(filepath, NULL);
-        background->sprite = sfSprite_create();
-        sfSprite_setTexture(background->sprite, background->texture, sfTrue);
-    }
-    return (background);
+    *background = malloc(sizeof(background_t));
+    if (*background == NULL)
+        return (84);
+    (*background)->texture = sfTexture_createFromFile(filepath, NULL);
+    (*background)->sprite = sfSprite_create();
+    sfSprite_setTexture((*background)->sprite, (*background)->texture, sfTrue);
+    return (0);
 }
 
 void destroy_background(background_t *background)

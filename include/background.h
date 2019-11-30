@@ -17,7 +17,7 @@ typedef struct background {
     sfSprite *sprite;
 } background_t;
 
-background_t *create_background(char *filepath);
+int create_background(background_t **background, char *filepath);
 void destroy_background(background_t *background);
 
 #endif // DEF_BACKGROUND
