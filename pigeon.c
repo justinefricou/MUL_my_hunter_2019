@@ -7,12 +7,15 @@
 
 #include "include/pigeon.h"
 
+#include <stdio.h>
+
 pigeon_t *create_pigeon(char *filepath, int x, int y)
 {
     pigeon_t *pigeon = NULL;
 
     pigeon = malloc(sizeof(pigeon_t));
     if (pigeon != NULL) {
+        pigeon->lives = 1;
         pigeon->position.x = x;
         pigeon->position.y = y;
         pigeon->texture = sfTexture_createFromFile(filepath, NULL);
@@ -55,10 +58,28 @@ void make_pigeon_move(pigeon_t *pigeon)
     seconds = sfTime_asSeconds(time);
     if (seconds > 0.025) {
         sfClock_restart(pigeon->cl_moving);
-        if ((pigeon->position).x > 800)
-            (pigeon->position).x = -64;
-        else
+        if ((pigeon->position).x < 800)
             (pigeon->position).x += 5;
+        sfSprite_setPosition(pigeon->sprite, pigeon->position);
+    }
+}
+
+void make_pigeon_fall(pigeon_t *pigeon)
+{
+    sfTime time;
+    float seconds = 0.0;
+
+    time = sfClock_getElapsedTime(pigeon->cl_moving);
+    seconds = sfTime_asSeconds(time);
+    if (seconds > 0.025) {
+        sfClock_restart(pigeon->cl_moving);
+        if ((pigeon->position).y < 550) {
+            (pigeon->position).y += (int)(5 + (pigeon->position).y / 35);
+            (pigeon->position).x += 2;
+            pigeon->rect_sprite.left = 128;
+        } else
+            pigeon->rect_sprite.left = 0;
+        sfSprite_setTextureRect(pigeon->sprite, pigeon->rect_sprite);
         sfSprite_setPosition(pigeon->sprite, pigeon->position);
     }
 }

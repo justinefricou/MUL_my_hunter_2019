@@ -15,7 +15,7 @@ int play(sfRenderWindow *window)
     background = create_background("background.png");
     if (background == NULL)
         return (84);
-    pigeon = create_pigeon("pigeon.png", -64, 0);
+    pigeon = create_pigeon("pigeon.png", -64, 1);
     if (pigeon == NULL) {
         destroy_background(background);
         return (84);
@@ -36,13 +36,11 @@ void game_loop(sfRenderWindow *win, background_t *background, pigeon_t *pigeon)
     clock = sfClock_create();
     while (sfRenderWindow_isOpen(win)) {
         sfRenderWindow_pollEvent(win, &event);
-        handle_events_play(win, event);
+        handle_events_play(win, event, pigeon);
         time = sfClock_getElapsedTime(clock);
         seconds = sfTime_asSeconds(time);
         if (seconds > 0.025) {
             sfClock_restart(clock);
-            make_pigeon_flap(pigeon);
-            make_pigeon_move(pigeon);
             update_win_play(win, background->sprite, pigeon);
         }
     }
@@ -51,6 +49,11 @@ void game_loop(sfRenderWindow *win, background_t *background, pigeon_t *pigeon)
 
 void update_win_play(sfRenderWindow *win, sfSprite *backgrnd, pigeon_t *pigeon)
 {
+    if (pigeon->lives > 0) {
+        make_pigeon_flap(pigeon);
+        make_pigeon_move(pigeon);
+    } else
+        make_pigeon_fall(pigeon);
     sfRenderWindow_drawSprite(win, backgrnd, NULL);
     sfRenderWindow_drawSprite(win, pigeon->sprite, NULL);
     sfRenderWindow_display(win);
