@@ -7,7 +7,7 @@
 
 #include "include/display_usage.h"
 
-void display_usage()
+void display_usage(void)
 {
     write(1, "\nUSAGE\n", 7);
     write(1, "    ./my_hunter\n\n", 17);

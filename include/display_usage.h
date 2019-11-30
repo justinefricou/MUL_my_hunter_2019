@@ -10,6 +10,6 @@
 
 #include <unistd.h>
 
-void display_usage();
+void display_usage(void);
 
 #endif // DEF_DISPLAY_USAGE
