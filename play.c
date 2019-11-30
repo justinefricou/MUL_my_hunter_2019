@@ -15,7 +15,7 @@ int play(sfRenderWindow *window)
     background = create_background("background.png");
     if (background == NULL)
         return (84);
-    pigeon = create_pigeon("pigeon.png", 0, 0);
+    pigeon = create_pigeon("pigeon.png", -64, 0);
     if (pigeon == NULL) {
         destroy_background(background);
         return (84);
