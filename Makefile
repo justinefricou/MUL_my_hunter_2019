@@ -8,14 +8,16 @@
 NAME	=	my_hunter
 
 SRC	=	main.c\
-		display_usage.c
+		display_usage.c\
+		play.c\
+		events_play.c
 
 OBJ	=	$(SRC:.c=.o)
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-			gcc -o $(NAME) $(OBJ)
+			gcc -o $(NAME) $(OBJ) -l csfml-graphics -l csfml-system
 
 clean:
 		rm -f $(OBJ)
