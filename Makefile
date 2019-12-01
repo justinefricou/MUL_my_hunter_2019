@@ -12,6 +12,7 @@ SRC	=	main.c\
 		play.c\
 		events_play.c\
 		pigeon.c\
+		pigeons_arrays.c\
 		background.c\
 		weapon.c
 
