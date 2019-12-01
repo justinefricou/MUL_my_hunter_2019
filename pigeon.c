@@ -23,7 +23,7 @@ pigeon_t *create_pigeon(char *filepath, int x, int y)
         pigeon->rect_sprite.top = 0;
         pigeon->rect_sprite.left = 0;
         pigeon->rect_sprite.width = 64;
-        pigeon->rect_sprite.height = 64;
+        pigeon->rect_sprite.height = 30;
         pigeon->cl_flapping = sfClock_create();
         pigeon->cl_moving = sfClock_create();
         sfSprite_setTexture(pigeon->sprite, pigeon->texture, sfTrue);
@@ -81,6 +81,10 @@ void make_pigeon_fall(pigeon_t *pigeon)
             pigeon->rect_sprite.left = 0;
         sfSprite_setTextureRect(pigeon->sprite, pigeon->rect_sprite);
         sfSprite_setPosition(pigeon->sprite, pigeon->position);
+        if (pigeon->rect_sprite.top > 32)
+            (pigeon->rect_sprite.top)--;
+        else if (pigeon->rect_sprite.top != 0)
+            (pigeon->rect_sprite.top) = 0;
     }
 }
 

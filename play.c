@@ -62,7 +62,7 @@ void game_loop(sfRenderWindow *w, background_t *b, weapon_t *we, pigeon_t **p)
     sfSprite_setPosition(we->sprite, we->position);
     while (sfRenderWindow_isOpen(w)) {
         sfRenderWindow_pollEvent(w, &event);
-        handle_events_play(w, event, p);
+        handle_evts_play(w, event, we, p);
         time = sfClock_getElapsedTime(clock);
         seconds = sfTime_asSeconds(time);
         if (seconds > 0.025) {
@@ -84,7 +84,7 @@ void update_w_play(sfRenderWindow *w, sfSprite *b, weapon_t *we, pigeon_t **p)
             make_pigeon_fall(p[i]);
         sfRenderWindow_drawSprite(w, p[i]->sprite, NULL);
     }
-    make_wand_shine(we);
+    make_wand_sparkle(we);
     sfRenderWindow_drawSprite(w, we->sprite, NULL);
     sfRenderWindow_display(w);
 }
