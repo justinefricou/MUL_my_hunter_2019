@@ -14,7 +14,8 @@ SRC	=	main.c\
 		pigeon.c\
 		pigeons_arrays.c\
 		background.c\
-		weapon.c
+		weapon.c\
+		game_over_message.c
 
 OBJ	=	$(SRC:.c=.o)
 

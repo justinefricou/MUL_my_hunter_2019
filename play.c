@@ -7,27 +7,26 @@
 
 #include "include/play.h"
 
+void display_game_over(sfRenderWindow *window, sfText *score);
+
 int play(sfRenderWindow *window)
 {
     background_t *background = NULL;
     pigeon_t **pigeons = NULL;
     weapon_t *weapon = NULL;
+    sfText *score = NULL;
 
-    if (create_background(&background, "background.png") == 84)
-        return (84);
-    if (create_weapon(&weapon, "magic_wand.png") == 84) {
-        destroy_background(background);
-    } else if (create_pigeons_array(&pigeons, 5) == 84) {
-        destroy_background(background);
-        destroy_weapon(weapon);
-        return (84);
-    }
+    create_background(&background, "background.png");
+    create_weapon(&weapon, "magic_wand.png");
+    create_pigeons_array(&pigeons, 5);
     game_loop(window, background, weapon, pigeons);
+    score = weapon->score_text;
     destroy_background(background);
-    destroy_weapon(weapon);
     for (int i = 0; i < 5; i++)
         destroy_pigeon(pigeons[i]);
     free(pigeons);
+    display_game_over(window, score);
+    destroy_weapon(weapon);
     return (0);
 }
 
@@ -39,7 +38,7 @@ void game_loop(sfRenderWindow *w, background_t *b, weapon_t *we, pigeon_t **p)
 
     clock = sfClock_create();
     sfSprite_setPosition(we->sprite, we->position);
-    while (sfRenderWindow_isOpen(w)) {
+    while (sfRenderWindow_isOpen(w) && !pigeons_survived(p)) {
         sfRenderWindow_pollEvent(w, &event);
         handle_evts_play(w, event, we, p);
         time = sfClock_getElapsedTime(clock);
@@ -48,9 +47,8 @@ void game_loop(sfRenderWindow *w, background_t *b, weapon_t *we, pigeon_t **p)
             sfClock_restart(clock);
             update_w_play(w, b->sprite, we, p);
         }
-        if (pigeons_survived(p))
-            sfRenderWindow_close(w);
     }
+    if (pigeons_survived(p));
     sfClock_destroy(clock);
 }
 
