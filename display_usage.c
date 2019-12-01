@@ -16,7 +16,7 @@ void display_usage(void)
     write(1, " besiege a castle.\n", 19);
     write(1, "    Your mission is to prevent your ennemies from reaching "
         "out for help\n", 72);
-    write(1, "    by killing the carrier pigeons they send or receive.\n", 57);
+    write(1, "    by killing the carrier pigeons they send.\n", 46);
     write(1, "    The pigeons appear on the screen and move from one side to "
         "another.\n", 72);
     write(1, "    You can click on them to cast spells and kill "

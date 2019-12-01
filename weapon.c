@@ -69,12 +69,6 @@ void make_wand_sparkle(weapon_t *weapon)
     }
 }
 
-/*void make_wand_glow(weapon_t *weapon)
-{
-    weapon->rect_sprite.left = weapon->rect_sprite.width * 2;
-    sfSprite_setTextureRect(weapon->sprite, weapon->rect_sprite);
-}*/
-
 void destroy_weapon(weapon_t *weapon)
 {
     sfTexture_destroy(weapon->texture);
