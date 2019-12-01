@@ -27,6 +27,12 @@ int create_pigeons_array(pigeon_t ***pigeons, int nbr)
     }
 }
 
+void update_age_pigeons(pigeon_t **pigeons, sfTime time)
+{
+    for (int i = 0; i < 5; i++)
+        ((pigeons[i])->age) += sfTime_asSeconds(time);
+}
+
 void update_pigeons_array(pigeon_t **pigeons)
 {
     for (int i = 0; i < 5; i++) {

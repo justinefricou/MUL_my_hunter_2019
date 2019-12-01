@@ -7,8 +7,6 @@
 
 #include "include/play.h"
 
-#include <stdio.h>
-
 int play(sfRenderWindow *window)
 {
     background_t *background = NULL;
@@ -42,12 +40,10 @@ void game_loop(sfRenderWindow *w, background_t *b, weapon_t *we, pigeon_t **p)
     clock = sfClock_create();
     sfSprite_setPosition(we->sprite, we->position);
     while (sfRenderWindow_isOpen(w)) {
-printf("%i\n", we->score);
         sfRenderWindow_pollEvent(w, &event);
         handle_evts_play(w, event, we, p);
         time = sfClock_getElapsedTime(clock);
-        for (int i = 0; i < 5; i++)
-            ((p[i])->age) += sfTime_asSeconds(time);
+        update_age_pigeons(p, time);
         if (sfTime_asSeconds(time) > 0.020) {
             sfClock_restart(clock);
             update_w_play(w, b->sprite, we, p);
@@ -65,10 +61,11 @@ void update_w_play(sfRenderWindow *w, sfSprite *b, weapon_t *we, pigeon_t **p)
             make_pigeon_flap(p[i]);
             make_pigeon_move(p[i]);
         } else
-            make_pigeon_fall(p[i]);
+            make_pigeon_fall(p[i], we);
         sfRenderWindow_drawSprite(w, p[i]->sprite, NULL);
     }
     make_wand_sparkle(we);
     sfRenderWindow_drawSprite(w, we->sprite, NULL);
+    sfRenderWindow_drawText(w, we->score_text, NULL);
     sfRenderWindow_display(w);
 }

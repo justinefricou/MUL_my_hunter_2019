@@ -43,8 +43,8 @@ void mouse_click_play(sfRenderWindow *w, sfMouseButtonEvent e, weapon_t *we,
 {
     for (int i = 0; i < 5; i++) {
         if (click_right_x(e, p[i]) && click_right_y(e, p[i])) {
-            (p[i]->lives)--;
             sfSound_play(we->sound);
+            (p[i]->lives)--;
             (p[i]->rect_sprite.top) = 35;
             (p[i]->rect_sprite.height) = 40;
         }

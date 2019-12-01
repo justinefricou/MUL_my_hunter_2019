@@ -11,6 +11,7 @@
 #include "pigeon.h"
 
 int create_pigeons_array(pigeon_t ***pigeons, int nbr);
+void update_age_pigeons(pigeon_t **pigeons, sfTime time);
 void update_pigeons_array(pigeon_t **pigeons);
 
 #endif // DEF_PIGEONS_ARRAYS

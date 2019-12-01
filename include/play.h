@@ -13,6 +13,8 @@
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics/Texture.h>
 #include <SFML/Graphics/Sprite.h>
+#include <SFML/Graphics/Text.h>
+#include <SFML/Graphics/Color.h>
 #include <SFML/System/Time.h>
 #include <SFML/System/Clock.h>
 #include "events_play.h"

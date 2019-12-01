@@ -12,6 +12,7 @@
 #include <SFML/Graphics/Texture.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/System/Clock.h>
+#include "weapon.h"
 
 typedef struct pigeon {
     int lives;
@@ -27,7 +28,7 @@ typedef struct pigeon {
 pigeon_t *create_pigeon(char *filepath, int x, int y);
 void make_pigeon_flap(pigeon_t *pigeon);
 void make_pigeon_move(pigeon_t *pigeon);
-void make_pigeon_fall(pigeon_t *pigeon);
+void make_pigeon_fall(pigeon_t *pigeon, weapon_t *weapon);
 void destroy_pigeon(pigeon_t *pigeon);
 
 #endif // DEF_PIGEON

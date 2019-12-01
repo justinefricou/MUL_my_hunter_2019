@@ -61,7 +61,7 @@ void make_pigeon_move(pigeon_t *pigeon)
     }
 }
 
-void make_pigeon_fall(pigeon_t *pigeon)
+void make_pigeon_fall(pigeon_t *pigeon, weapon_t *weapon)
 {
     sfTime time;
 
@@ -78,8 +78,10 @@ void make_pigeon_fall(pigeon_t *pigeon)
         sfSprite_setPosition(pigeon->sprite, pigeon->position);
         if (pigeon->rect_sprite.top > 32)
             (pigeon->rect_sprite.top)--;
-        else if (pigeon->rect_sprite.top != 0)
+        else if (pigeon->rect_sprite.top != 0) {
             (pigeon->rect_sprite.top) = 0;
+            (weapon->score)++;
+        }
     }
 }
 
