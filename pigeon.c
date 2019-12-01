@@ -35,11 +35,9 @@ pigeon_t *create_pigeon(char *filepath, int x, int y)
 void make_pigeon_flap(pigeon_t *pigeon)
 {
     sfTime time;
-    float seconds = 0.0;
 
     time = sfClock_getElapsedTime(pigeon->cl_flapping);
-    seconds = sfTime_asSeconds(time);
-    if (seconds > 0.1) {
+    if (sfTime_asSeconds(time) > 0.1) {
         sfClock_restart(pigeon->cl_flapping);
         if (pigeon->rect_sprite.left == pigeon->rect_sprite.width * 3)
             pigeon->rect_sprite.left = 0;
@@ -52,11 +50,9 @@ void make_pigeon_flap(pigeon_t *pigeon)
 void make_pigeon_move(pigeon_t *pigeon)
 {
     sfTime time;
-    float seconds = 0.0;
 
     time = sfClock_getElapsedTime(pigeon->cl_moving);
-    seconds = sfTime_asSeconds(time);
-    if (seconds > 0.025) {
+    if (sfTime_asSeconds(time) > 0.025) {
         sfClock_restart(pigeon->cl_moving);
         if ((pigeon->position).x < 800)
             (pigeon->position).x += 5;
@@ -67,11 +63,9 @@ void make_pigeon_move(pigeon_t *pigeon)
 void make_pigeon_fall(pigeon_t *pigeon)
 {
     sfTime time;
-    float seconds = 0.0;
 
     time = sfClock_getElapsedTime(pigeon->cl_moving);
-    seconds = sfTime_asSeconds(time);
-    if (seconds > 0.025) {
+    if (sfTime_asSeconds(time) > 0.025) {
         sfClock_restart(pigeon->cl_moving);
         if ((pigeon->position).y < 550) {
             (pigeon->position).y += (int)(5 + (pigeon->position).y / 35);

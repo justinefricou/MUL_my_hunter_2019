@@ -32,11 +32,9 @@ int create_weapon(weapon_t **weapon, char *filepath)
 void make_wand_sparkle(weapon_t *weapon)
 {
     sfTime time;
-    float seconds = 0.0;
 
     time = sfClock_getElapsedTime(weapon->clock);
-    seconds = sfTime_asSeconds(time);
-    if (seconds > 0.1) {
+    if (sfTime_asSeconds(time) > 0.1) {
         sfClock_restart(weapon->clock);
         if (weapon->rect_sprite.left >= weapon->rect_sprite.width)
             weapon->rect_sprite.left = 0;
