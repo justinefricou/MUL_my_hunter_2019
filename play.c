@@ -7,6 +7,8 @@
 
 #include "include/play.h"
 
+#include <stdio.h>
+
 int play(sfRenderWindow *window)
 {
     background_t *background = NULL;
@@ -31,41 +33,22 @@ int play(sfRenderWindow *window)
     return (0);
 }
 
-int create_pigeons_array(pigeon_t ***pigeons, int nbr)
-{
-    int failed_malloc = 0;
-    int i = 0;
-
-    *pigeons = malloc(sizeof(pigeon_t) * nbr);
-    if (*pigeons == NULL)
-        return (84);
-    for ( ; i < nbr && !failed_malloc; i++) {
-        (*pigeons)[i] = create_pigeon("pigeon.png", -64 * i, i * 90);
-        if ((*pigeons)[i] == NULL)
-            failed_malloc = 1;
-    }
-    if (failed_malloc) {
-        for (int j = 0; j < i; j++)
-            free((*pigeons)[j]);
-        free(*pigeons);
-    }
-}
-
 void game_loop(sfRenderWindow *w, background_t *b, weapon_t *we, pigeon_t **p)
 {
     sfEvent event;
     sfClock *clock;
     sfTime time;
-    float seconds = 0.0;
 
     clock = sfClock_create();
     sfSprite_setPosition(we->sprite, we->position);
     while (sfRenderWindow_isOpen(w)) {
+printf("%i\n", we->score);
         sfRenderWindow_pollEvent(w, &event);
         handle_evts_play(w, event, we, p);
         time = sfClock_getElapsedTime(clock);
-        seconds = sfTime_asSeconds(time);
-        if (seconds > 0.025) {
+        for (int i = 0; i < 5; i++)
+            ((p[i])->age) += sfTime_asSeconds(time);
+        if (sfTime_asSeconds(time) > 0.020) {
             sfClock_restart(clock);
             update_w_play(w, b->sprite, we, p);
         }
@@ -76,8 +59,9 @@ void game_loop(sfRenderWindow *w, background_t *b, weapon_t *we, pigeon_t **p)
 void update_w_play(sfRenderWindow *w, sfSprite *b, weapon_t *we, pigeon_t **p)
 {
     sfRenderWindow_drawSprite(w, b, NULL);
+    update_pigeons_array(p);
     for (int i = 0; i < 5; i++) {
-        if (p[i]->lives > 0) {
+        if ((p[i])->lives > 0) {
             make_pigeon_flap(p[i]);
             make_pigeon_move(p[i]);
         } else

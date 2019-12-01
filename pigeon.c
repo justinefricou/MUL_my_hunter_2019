@@ -16,14 +16,15 @@ pigeon_t *create_pigeon(char *filepath, int x, int y)
     pigeon = malloc(sizeof(pigeon_t));
     if (pigeon != NULL) {
         pigeon->lives = 1;
-        pigeon->position.x = x;
-        pigeon->position.y = y;
+        pigeon->age = 0.0;
+        (pigeon->position).x = x;
+        (pigeon->position).y = y;
         pigeon->texture = sfTexture_createFromFile(filepath, NULL);
         pigeon->sprite = sfSprite_create();
-        pigeon->rect_sprite.top = 0;
-        pigeon->rect_sprite.left = 0;
-        pigeon->rect_sprite.width = 64;
-        pigeon->rect_sprite.height = 30;
+        (pigeon->rect_sprite).top = 0;
+        (pigeon->rect_sprite).left = 0;
+        (pigeon->rect_sprite).width = 64;
+        (pigeon->rect_sprite).height = 30;
         pigeon->cl_flapping = sfClock_create();
         pigeon->cl_moving = sfClock_create();
         sfSprite_setTexture(pigeon->sprite, pigeon->texture, sfTrue);

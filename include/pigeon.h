@@ -15,6 +15,7 @@
 
 typedef struct pigeon {
     int lives;
+    float age;
     sfVector2f position;
     sfTexture *texture;
     sfSprite *sprite;
