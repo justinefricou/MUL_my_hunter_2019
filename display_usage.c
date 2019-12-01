@@ -19,6 +19,6 @@ void display_usage(void)
     write(1, "    by killing the carrier pigeons they send or receive.\n", 57);
     write(1, "    The pigeons appear on the screen and move from one side to "
         "another.\n", 72);
-    write(1, "    You can click on them to cast a spell and kill "
-        "them.\n\n", 58);
+    write(1, "    You can click on them to cast spells and kill "
+        "them.\n\n", 57);
 }
