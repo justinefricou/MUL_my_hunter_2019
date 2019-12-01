@@ -10,6 +10,7 @@
 
 void set_text(sfRenderWindow *w, sfText *line1, sfText *score, sfText *line3);
 void handle_events_game_over(sfRenderWindow *window, sfEvent event);
+void mouse_moved_game_over(sfRenderWindow *window, sfMouseButtonEvent event);
 void mouse_click_game_over(sfRenderWindow *window, sfMouseButtonEvent event);
 
 void display_game_over(sfRenderWindow *window, sfText *score)
@@ -74,12 +75,3 @@ void mouse_click_game_over(sfRenderWindow *window, sfMouseButtonEvent event)
     if (500 <= event.x && event.x <= 600 && 350 <= event.y && event.y <= 400)
         sfRenderWindow_close(window);
 }
-
-/*void set_3rd_line(sfRenderWindow *window, sfText *3rd_line, sfText score)
-{
-
-    sfText_setString(3rd_line, "Play again ?");
-    sfText_setColor(3rd_line, sfBlack);
-    sfText_setCharacterSize(3rd_line, 50);
-    sfText_setFont(3rd_line, weapon->font);
-}*/

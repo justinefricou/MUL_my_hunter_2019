@@ -55,7 +55,7 @@ void make_pigeon_move(pigeon_t *pigeon)
     if (sfTime_asSeconds(time) > 0.025) {
         sfClock_restart(pigeon->cl_moving);
         if ((pigeon->position).x < 800)
-            (pigeon->position).x += 5;
+            (pigeon->position).x += 7;
         else
             pigeon->survived = 1;
         sfSprite_setPosition(pigeon->sprite, pigeon->position);
