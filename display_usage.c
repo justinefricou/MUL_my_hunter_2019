@@ -12,8 +12,13 @@ void display_usage(void)
     write(1, "\nUSAGE\n", 7);
     write(1, "    ./my_hunter\n\n", 17);
     write(1, "DESCRIPTION\n", 12);
-    write(1, "    You are a hunter who shoots ducks.\n", 39);
-    write(1, "    Ducks appear on the screen and move from one side to "
-        "another.\n", 66);
-    write(1, "    You can click on them to shoot them.\n\n", 42);
+    write(1, "    You are a wizard summoned by a Lord to help him", 51);
+    write(1, " besiege a castle.\n", 19);
+    write(1, "    Your mission is to prevent your ennemies from reaching "
+        "out for help\n", 72);
+    write(1, "    by killing the carrier pigeons they send or receive.\n", 57);
+    write(1, "    The pigeons appear on the screen and move from one side to "
+        "another.\n", 72);
+    write(1, "    You can click on them to cast a spell and kill "
+        "them.\n\n", 58);
 }
