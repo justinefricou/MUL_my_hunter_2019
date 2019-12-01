@@ -15,6 +15,7 @@
 #include "weapon.h"
 
 typedef struct pigeon {
+    int survived;
     int lives;
     float age;
     sfVector2f position;

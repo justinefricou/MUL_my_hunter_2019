@@ -34,8 +34,9 @@ typedef struct weapon {
 
 int create_weapon(weapon_t **weapon, char *filepath);
 void initialize_score(weapon_t *weapon);
+void update_score(weapon_t *weapon);
 void make_wand_sparkle(weapon_t *weapon);
-void make_wand_glow(weapon_t *weapon);
+//void make_wand_glow(weapon_t *weapon);
 void destroy_weapon(weapon_t *weapon);
 
 #endif // DEF_WEAPON

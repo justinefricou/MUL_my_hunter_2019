@@ -48,8 +48,19 @@ void game_loop(sfRenderWindow *w, background_t *b, weapon_t *we, pigeon_t **p)
             sfClock_restart(clock);
             update_w_play(w, b->sprite, we, p);
         }
+        if (pigeons_survived(p))
+            sfRenderWindow_close(w);
     }
     sfClock_destroy(clock);
+}
+
+int pigeons_survived(pigeon_t **pigeons)
+{
+    for (int i = 0; i < 5; i++) {
+        if ((pigeons[i])->survived)
+            return (1);
+    }
+    return (0);
 }
 
 void update_w_play(sfRenderWindow *w, sfSprite *b, weapon_t *we, pigeon_t **p)
@@ -66,6 +77,7 @@ void update_w_play(sfRenderWindow *w, sfSprite *b, weapon_t *we, pigeon_t **p)
     }
     make_wand_sparkle(we);
     sfRenderWindow_drawSprite(w, we->sprite, NULL);
+    update_score(we);
     sfRenderWindow_drawText(w, we->score_text, NULL);
     sfRenderWindow_display(w);
 }

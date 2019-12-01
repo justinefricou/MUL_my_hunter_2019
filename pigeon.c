@@ -14,22 +14,21 @@ pigeon_t *create_pigeon(char *filepath, int x, int y)
     pigeon_t *pigeon = NULL;
 
     pigeon = malloc(sizeof(pigeon_t));
-    if (pigeon != NULL) {
-        pigeon->lives = 1;
-        pigeon->age = 0.0;
-        (pigeon->position).x = x;
-        (pigeon->position).y = y;
-        pigeon->texture = sfTexture_createFromFile(filepath, NULL);
-        pigeon->sprite = sfSprite_create();
-        (pigeon->rect_sprite).top = 0;
-        (pigeon->rect_sprite).left = 0;
-        (pigeon->rect_sprite).width = 64;
-        (pigeon->rect_sprite).height = 30;
-        pigeon->cl_flapping = sfClock_create();
-        pigeon->cl_moving = sfClock_create();
-        sfSprite_setTexture(pigeon->sprite, pigeon->texture, sfTrue);
-        sfSprite_setTextureRect(pigeon->sprite, pigeon->rect_sprite);
-    }
+    pigeon->survived = 0;
+    pigeon->lives = 1;
+    pigeon->age = 0.0;
+    (pigeon->position).x = x;
+    (pigeon->position).y = y;
+    pigeon->texture = sfTexture_createFromFile(filepath, NULL);
+    pigeon->sprite = sfSprite_create();
+    (pigeon->rect_sprite).top = 0;
+    (pigeon->rect_sprite).left = 0;
+    (pigeon->rect_sprite).width = 64;
+    (pigeon->rect_sprite).height = 30;
+    pigeon->cl_flapping = sfClock_create();
+    pigeon->cl_moving = sfClock_create();
+    sfSprite_setTexture(pigeon->sprite, pigeon->texture, sfTrue);
+    sfSprite_setTextureRect(pigeon->sprite, pigeon->rect_sprite);
     return (pigeon);
 }
 
@@ -57,6 +56,8 @@ void make_pigeon_move(pigeon_t *pigeon)
         sfClock_restart(pigeon->cl_moving);
         if ((pigeon->position).x < 800)
             (pigeon->position).x += 5;
+        else
+            pigeon->survived = 1;
         sfSprite_setPosition(pigeon->sprite, pigeon->position);
     }
 }

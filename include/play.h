@@ -25,6 +25,7 @@
 
 int play(sfRenderWindow *window);
 void game_loop(sfRenderWindow *w, background_t *b, weapon_t *we, pigeon_t **p);
+int pigeons_survived(pigeon_t **pigeons);
 void update_w_play(sfRenderWindow *w, sfSprite *b, weapon_t *we, pigeon_t **p);
 
 #endif // DEF_PLAY

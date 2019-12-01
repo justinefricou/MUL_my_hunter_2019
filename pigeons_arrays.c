@@ -37,6 +37,7 @@ void update_pigeons_array(pigeon_t **pigeons)
 {
     for (int i = 0; i < 5; i++) {
         if (((pigeons[i])->age) > 10000.0 + 1000.0 * i) {
+            pigeons[i]->survived = 0;
             pigeons[i]->lives = 1;
             pigeons[i]->age = 0.0;
             (pigeons[i]->position).x = -64;

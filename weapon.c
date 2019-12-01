@@ -23,7 +23,6 @@ int create_weapon(weapon_t **weapon, char *filepath)
     (*weapon)->sound = sfSound_create();
     (*weapon)->font = sfFont_createFromFile("enchanted_land.otf");
     initialize_score(*weapon);
-
     sfSprite_setTexture((*weapon)->sprite, (*weapon)->texture, sfTrue);
     sfSound_setBuffer((*weapon)->sound, (*weapon)->sound_buff);
     return (0);
@@ -41,6 +40,18 @@ void initialize_score(weapon_t *weapon)
     sfText_setCharacterSize(weapon->score_text, 50);
     sfText_setFont(weapon->score_text, weapon->font);
     sfText_setStyle(weapon->score_text, sfTextBold);
+}
+
+void update_score(weapon_t *weapon)
+{
+    char str[9] = {0};
+    int nbr = weapon->score;
+
+    for (int i = 7; i >= 0; i--) {
+        str[i] = nbr % 10 + 48;
+        nbr /= 10;
+    }
+    sfText_setString(weapon->score_text, str);
 }
 
 void make_wand_sparkle(weapon_t *weapon)
