@@ -10,9 +10,12 @@
 
 #include <SFML/Graphics/RenderWindow.h>
 #include "pigeon.h"
+#include "weapon.h"
 
-void handle_events_play(sfRenderWindow *win, sfEvent event, pigeon_t **pigeons);
-void manage_mouse_click_play(sfMouseButtonEvent event, pigeon_t **pigeons);
+void handle_evts_play(sfRenderWindow *w, sfEvent e, weapon_t *we, pigeon_t **p);
+void manage_window_resized_play(sfRenderWindow *window);
+void mouse_click_play(sfRenderWindow *w, sfMouseButtonEvent e, weapon_t *we,
+                        pigeon_t **p);
 int click_right_x(sfMouseButtonEvent event, pigeon_t *pigeon);
 int click_right_y(sfMouseButtonEvent event, pigeon_t *pigeon);
 
