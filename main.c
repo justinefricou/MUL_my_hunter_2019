@@ -17,6 +17,7 @@ int main(int argc, char **argv)
         return (0);
     }
     window = sfRenderWindow_create(vid_mode, "my_hunter", sfDefaultStyle, NULL);
+    sfRenderWindow_setFramerateLimit(window, 60);
     if (play(window) == 84) {
         sfRenderWindow_destroy(window);
         return (84);

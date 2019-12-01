@@ -20,7 +20,8 @@ OBJ	=	$(SRC:.c=.o)
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-			gcc -o $(NAME) $(OBJ) -l csfml-graphics -l csfml-system
+			gcc -o $(NAME) $(OBJ) -l csfml-graphics -l csfml-system\
+			-l csfml-audio
 
 clean:
 		rm -f $(OBJ)
