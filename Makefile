@@ -2,7 +2,7 @@
 ## EPITECH PROJECT, 2019
 ## Makefile
 ## File description:
-## A Makefile that compiles cat
+## A Makefile to compile my_hunter
 ##
 
 NAME	=	my_hunter
