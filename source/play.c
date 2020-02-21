@@ -48,8 +48,8 @@ void game_loop(sfRenderWindow *w, background_t *b, weapon_t *we, pigeon_t **p)
             update_w_play(w, b->sprite, we, p);
         }
     }
-    if (pigeons_survived(p));
-    sfClock_destroy(clock);
+    if (pigeons_survived(p))
+        sfClock_destroy(clock);
 }
 
 int pigeons_survived(pigeon_t **pigeons)
