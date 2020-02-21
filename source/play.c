@@ -16,8 +16,8 @@ int play(sfRenderWindow *window)
     weapon_t *weapon = NULL;
     sfText *score = NULL;
 
-    create_background(&background, "background.png");
-    create_weapon(&weapon, "magic_wand.png");
+    create_background(&background, "resources/background.png");
+    create_weapon(&weapon, "resources/magic_wand.png");
     create_pigeons_array(&pigeons, 5);
     game_loop(window, background, weapon, pigeons);
     score = weapon->score_text;

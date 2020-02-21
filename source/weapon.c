@@ -19,9 +19,9 @@ int create_weapon(weapon_t **weapon, char *filepath)
     (*weapon)->rect_sprite.width = 92;
     (*weapon)->rect_sprite.height = 160;
     (*weapon)->clock = sfClock_create();
-    (*weapon)->sound_buff = sfSoundBuffer_createFromFile("spell_sound.ogg");
+    (*weapon)->sound_buff = sfSoundBuffer_createFromFile("resources/spell_sound.ogg");
     (*weapon)->sound = sfSound_create();
-    (*weapon)->font = sfFont_createFromFile("enchanted_land.otf");
+    (*weapon)->font = sfFont_createFromFile("resources/enchanted_land.otf");
     initialize_score(*weapon);
     sfSprite_setTexture((*weapon)->sprite, (*weapon)->texture, sfTrue);
     sfSound_setBuffer((*weapon)->sound, (*weapon)->sound_buff);

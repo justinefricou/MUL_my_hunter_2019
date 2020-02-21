@@ -16,7 +16,7 @@ int create_pigeons_array(pigeon_t ***pigeons, int nbr)
     if (*pigeons == NULL)
         return (84);
     for ( ; i < nbr && !failed_malloc; i++) {
-        (*pigeons)[i] = create_pigeon("pigeon.png", -64 * i, i * 90);
+        (*pigeons)[i] = create_pigeon("resources/pigeon.png", -64 * i, i * 90);
         if ((*pigeons)[i] == NULL)
             failed_malloc = 1;
     }
