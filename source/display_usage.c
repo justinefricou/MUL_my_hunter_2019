@@ -5,7 +5,7 @@
 ** my_hunter : displays usage.
 */
 
-#include "include/display_usage.h"
+#include "display_usage.h"
 
 void display_usage(void)
 {

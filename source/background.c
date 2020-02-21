@@ -5,7 +5,7 @@
 ** my_hunter : functions handling backgrounds
 */
 
-#include "include/background.h"
+#include "background.h"
 
 int create_background(background_t **background, char *filepath)
 {

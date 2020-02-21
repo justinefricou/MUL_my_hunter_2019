@@ -5,7 +5,7 @@
 ** my_hunter : main function
 */
 
-#include "include/main.h"
+#include "main.h"
 
 int main(int argc, char **argv)
 {

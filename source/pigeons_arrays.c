@@ -5,7 +5,7 @@
 ** my_hunter : functions to work with pigeons arrays
 */
 
-#include "include/pigeons_arrays.h"
+#include "pigeons_arrays.h"
 
 int create_pigeons_array(pigeon_t ***pigeons, int nbr)
 {

@@ -5,7 +5,7 @@
 ** my_hunter : functions handling weapon
 */
 
-#include "include/weapon.h"
+#include "weapon.h"
 
 int create_weapon(weapon_t **weapon, char *filepath)
 {

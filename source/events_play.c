@@ -5,7 +5,7 @@
 ** my_hunter : functions handling event during a game.
 */
 
-#include "include/events_play.h"
+#include "events_play.h"
 
 #include <stdio.h>
 
@@ -22,21 +22,6 @@ void handle_evts_play(sfRenderWindow *w, sfEvent e, weapon_t *we, pigeon_t **p)
         break;
     }
 }
-
-/*void manage_window_resized_play(sfRenderWindow *window)
-{
-    sfVector2u size;
-
-    size = sfRenderWindow_getSize(window);
-    if (size.x < 800) {
-        size.x = 800;
-        sfRenderWindow_setSize(window, size);
-    }
-    if (size.y < 600) {
-        size.y = 600;
-        sfRenderWindow_setSize(window, size);
-    }
-}*/
 
 void mouse_click_play(sfRenderWindow *w, sfMouseButtonEvent e, weapon_t *we,
                         pigeon_t **p)

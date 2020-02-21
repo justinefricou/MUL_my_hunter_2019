@@ -5,7 +5,7 @@
 ** my_hunter : functions handling pigeons
 */
 
-#include "include/pigeon.h"
+#include "pigeon.h"
 
 #include <stdio.h>
 

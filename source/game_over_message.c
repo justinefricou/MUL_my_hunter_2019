@@ -5,8 +5,8 @@
 ** my_hunter : game over message functions
 */
 
-#include "include/weapon.h"
-#include "include/play.h"
+#include "weapon.h"
+#include "play.h"
 
 void set_text(sfRenderWindow *w, sfText *line1, sfText *score, sfText *line3);
 void handle_events_game_over(sfRenderWindow *window, sfEvent event);

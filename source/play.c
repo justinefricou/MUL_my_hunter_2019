@@ -5,7 +5,7 @@
 ** my_hunter : game functions
 */
 
-#include "include/play.h"
+#include "play.h"
 
 void display_game_over(sfRenderWindow *window, sfText *score);
 
