@@ -25,6 +25,7 @@ int create_pigeons_array(pigeon_t ***pigeons, int nbr)
             free((*pigeons)[j]);
         free(*pigeons);
     }
+    return (0);
 }
 
 void update_age_pigeons(pigeon_t **pigeons, sfTime time)

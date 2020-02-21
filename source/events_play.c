@@ -16,22 +16,21 @@ void handle_evts_play(sfRenderWindow *w, sfEvent e, weapon_t *we, pigeon_t **p)
         sfRenderWindow_close(w);
         break;
     case sfEvtMouseButtonReleased :
-        mouse_click_play(w, e.mouseButton, we, p);
+        mouse_click_play(e.mouseButton, we, p);
         break;
     default :
         break;
     }
 }
 
-void mouse_click_play(sfRenderWindow *w, sfMouseButtonEvent e, weapon_t *we,
-                        pigeon_t **p)
+void mouse_click_play(sfMouseButtonEvent evt, weapon_t *wpn, pigeon_t **pigeon)
 {
     for (int i = 0; i < 5; i++) {
-        if (click_right_x(e, p[i]) && click_right_y(e, p[i])) {
-            sfSound_play(we->sound);
-            (p[i]->lives)--;
-            (p[i]->rect_sprite.top) = 35;
-            (p[i]->rect_sprite.height) = 40;
+        if (click_right_x(evt, pigeon[i]) && click_right_y(evt, pigeon[i])) {
+            sfSound_play(wpn->sound);
+            (pigeon[i]->lives)--;
+            (pigeon[i]->rect_sprite.top) = 35;
+            (pigeon[i]->rect_sprite.height) = 40;
         }
     }
 }
